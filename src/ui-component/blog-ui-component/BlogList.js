@@ -1,5 +1,6 @@
 import React from 'react'
 import Card from './Card';
+import { Link } from 'react-router-dom';
 
 export default function BlogList({posts}) {    
     return (
@@ -8,12 +9,14 @@ export default function BlogList({posts}) {
             {    
                 posts.map( 
                     post => <div className="col s6" key={post.id}> 
-                            <Card 
-                                title={post.title}
-                                body={ post.body } 
-                                id={post.id}
-                                key = {post.id}
-                            /> 
+                                <Link to={"/blog/"+post.id}>
+                                    <Card 
+                                        title={post.title}
+                                        body={ post.body } 
+                                        id={post.id}
+                                        key = {post.id}
+                                    /> 
+                                </Link>
                             </div>
                 )
             }
