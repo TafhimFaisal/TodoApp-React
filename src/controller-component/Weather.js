@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Axios from 'axios'
+import Card from '../ui-component/weather-ui-component/Card';
 
 export default class Weather extends Component {
     constructor () {
@@ -33,33 +34,9 @@ export default class Weather extends Component {
     
 
     render() {
-        // console.log(this.state ? this.state.weather : null);
-        let weatherCard = this.state ? (
-                <div className="row">
-                    <div className="col s12">
-                    
-                        <div className="post card">
-                            <div className="card-content">
-                                <span className="card-title">{this.state.weather[0].description}</span>
-                                <p></p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-        ) : (
-            <div className="row">
-                    <div className="col s12">
-                    
-                        <div className="post card">
-                            <div className="card-content">
-                                <span className="card-title">Please Enter City</span>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-        )
+        let weatherCard = this.state 
+                        ? <Card weather={this.state.weather[0].description}/> 
+                        : <Card weather={'Please Enter City Name'}/>
         return (
             <div className="container center">
                 <h1><b>Weather</b></h1>
@@ -73,7 +50,11 @@ export default class Weather extends Component {
                     <div className="col s3"></div>
                 </div>
 
-                {weatherCard}
+                <div className="row">
+                    <div className="col s12">
+                        {weatherCard}
+                    </div>
+                </div>
 
             </div>
         )
