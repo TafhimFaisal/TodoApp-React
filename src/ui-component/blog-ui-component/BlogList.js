@@ -8,8 +8,8 @@ export default function BlogList({posts}) {
             <div className="row">
             {    
                 posts.map( 
-                    post => <div className="col s6" key={post.id}> 
-                                <Link to={"/blog/"+post.id}>
+                    post => <div className="col s12" key={post.id}> 
+                                <Link to={"/blog/"+post.id} key={post.id}>
                                     <Card 
                                         title={post.title}
                                         body={ post.body } 

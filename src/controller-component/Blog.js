@@ -1,38 +1,41 @@
 import React, { Component } from 'react'
-import Axios from 'axios';
+import { connect } from 'react-redux';
+import deletePostAction from '../action/deletePostAction';
 
-export default class Blog extends Component {
-    constructor(){
-        super();
-        this.state = {
-            data:{
-                id:null,
-                uaer_id:null,
-                title:"Blog content is loading..." ,
-                body:null
-            }
-        }
-    }
-    componentDidMount(){
-        Axios.get('https://jsonplaceholder.typicode.com/posts/' + this.props.match.params.post_id)
-            .then(
-                ({ data }) => {
-                    
-                    this.setState({
-                        data
-                    }) 
+class Blog extends Component {
 
-                }
-            )
+        handleClick = () => {
+            this.props.deletePost(this.props.post.id)
+            this.props.history.push('/blogs')
         }
+
         render() {
-        const {body,title} = this.state.data;
+        const {body,title,id} = this.props.post;
+        
         return (
-            <div className="container center">
+            <div className="container center" key={id}>
                 <h1>{title}</h1>
                 <p>{body}</p>
+                <button className="btn" onClick={this.handleClick}>
+                    Delete Post
+                </button>
             </div>
         )
     }
 }
 
+const mapStateToProps = (state,ownProps) => {
+    return {
+        post:state.posts.find( (post) => {
+            return post.id === parseInt(ownProps.match.params.post_id)
+        } )
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        deletePost: (id) => dispatch(deletePostAction(id))
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Blog);

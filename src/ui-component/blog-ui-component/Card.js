@@ -5,7 +5,7 @@ export default function Card({title,id,body}) {
         <div className="post card" key={id}>
             <div className="card-content">
                 <span className="card-title">{title}</span>
-                {/* <p>{body}</p> */}
+                <p>{body}</p>
             </div>
         </div>
     )

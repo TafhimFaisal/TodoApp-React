@@ -1,36 +1,27 @@
 import React, { Component } from 'react'
-import Axios from 'axios'
+// import Axios from 'axios'
 import BlogList from '../ui-component/blog-ui-component/BlogList'
+import { connect } from 'react-redux';
 
 
-export default class Blogs extends Component {
-    
-    constructor () {
-        super();
-        this.state = {
-            posts: []
-        }
-    }
-
-    componentDidMount(){
-        Axios.get('https://jsonplaceholder.typicode.com/posts')
-            .then(
-                res => {
-                    this.setState({posts:res.data.slice(0,14)}) 
-                }
-            )
-    }
- 
-
+class Blogs extends Component {
     render() {
         return (
             <div className="container">
                 {
-                    this.state.posts.length 
-                    ? <BlogList posts={this.state.posts}/> 
+                    this.props.posts.length 
+                    ? <BlogList posts={this.props.posts}/> 
                     : "No Posts"
                 }
             </div>
         )
+    }    
+}
+
+const mapStateToProps = (state) =>{
+    return {
+        posts:state.posts
     }
 }
+
+export default  connect(mapStateToProps)(Blogs);
