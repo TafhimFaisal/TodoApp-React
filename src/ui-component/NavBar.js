@@ -16,6 +16,7 @@ const NavBar = (props) => {
                     <li><NavLink to="/aboutUs">About Us </NavLink></li>
                     <li><NavLink to="/contactUs">Contact Us </NavLink></li>
                     <li><NavLink to="/blogs">Blogs</NavLink></li>
+                    <li><NavLink to="/weather">Weather</NavLink></li>
                 </ul>
             </div>
         </nav>

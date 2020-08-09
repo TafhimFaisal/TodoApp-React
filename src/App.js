@@ -6,6 +6,7 @@ import AboutUs from './controller-component/AboutUs';
 import ContuctUs from './controller-component/ContuctUs';
 import Blogs from './controller-component/Blogs';
 import Blog from './controller-component/Blog';
+import Weather from './controller-component/Weather';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
               <Route path="/contactUs"          component = {ContuctUs} />
               <Route path="/blogs"              component = {Blogs} />
               <Route path="/blog/:post_id"      component = {Blog} />
+              <Route path="/weather"            component = {Weather} />
             </Switch>
         </div>
       </Router>
