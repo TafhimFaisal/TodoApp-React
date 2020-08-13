@@ -40,6 +40,7 @@ export default class Weather extends Component {
         return (
             <div className="container center">
                 <h1><b>Weather</b></h1>
+                
                 <div className="row">
                     <div className="col s3"></div>
                     <div className="col s6">

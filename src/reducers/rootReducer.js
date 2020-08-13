@@ -39,26 +39,3 @@ const rootReducer = (state = initialState,action) => {
 }
 
 export default rootReducer
-
-    // componentDidMount(){
-    //     Axios.get('https://jsonplaceholder.typicode.com/posts/' + this.props.match.params.post_id)
-    //         .then(
-    //             ({ data }) => {
-                    
-    //                 this.setState({
-    //                     data
-    //                 }) 
-
-    //             }
-    //         )
-    //     }
-
-    // componentDidMount(){
-    //     Axios.get('https://jsonplaceholder.typicode.com/posts')
-    //         .then(
-    //             res => {
-    //                 this.setState({posts:res.data.slice(0,14)}) 
-    //             }
-    //         )
-    // }
- 
